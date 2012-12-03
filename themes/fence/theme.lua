@@ -7,9 +7,9 @@ theme = {}
 
 home          = os.getenv("HOME")
 config        = awful.util.getdir("config")
-shared        = "/usr/local/share/awesome"
+shared        = "/usr/share/awesome"
 if not awful.util.file_readable(shared .. "/icons/awesome16.png") then
-    shared    = "/usr/local/share/awesome"
+    shared    = "/usr/share/awesome"
 end
 sharedicons   = shared .. "/icons"
 sharedthemes  = shared .. "/themes"

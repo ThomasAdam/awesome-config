@@ -19,7 +19,7 @@ print("Entered rc.lua: " .. os.time())
 -- Variable definitions
 -- Themes define colours, icons, and wallpapers
 -- The default is a dark theme
-theme_path = "/home/n6tadam/.config/awesome/themes/fence/theme.lua"
+theme_path = "/global/users/thomas/.config/awesome/themes/fence/theme.lua"
 -- Uncommment this for a lighter theme
 -- theme_path = "/usr/share/awesome/themes/sky/theme"
 
