@@ -27,8 +27,8 @@ end
 
 theme.font          = "fixed 10"
 
-theme.bg_normal     = "#368DFF"
-theme.bg_focus      = "#7366FF"
+theme.bg_normal     = "#4F9BFF"
+theme.bg_focus      = "#0066ef"
 theme.bg_urgent     = "#EE36C6"
 theme.bg_minimize   = "#C8C8C8"
 
@@ -44,6 +44,8 @@ theme.border_marked = "#07AD08"
 
 theme.taglist_squares_sel   = themedir .. "/taglist/squarefw.png"
 theme.taglist_squares_unsel = themedir .. "/taglist/squarew.png"
+theme.taglist_fg_focus = "white"
+theme.taglist_bg_focus = "#47B286"
 
 -- There are other variable sets
 -- overriding the default one when
