@@ -88,6 +88,22 @@ shifty.config.tags = {
 		screen    = 1,
 		init      = true
 	},
+	office = {
+		layout	  = awful.layout.suit.float,
+		exclusive = false,
+		position  = 5,
+		screen    = 2,
+		init	  = true,
+		leave_kills = true
+	},
+	VBox = {
+		layout	  = awful.layout.suit.float,
+		exclusive = false,
+		position  = 6,
+		screen    = 2,
+		init	  = true,
+		leave_kills = true
+	}
 }
 
 -- SHIFTY: application matching rules
@@ -101,6 +117,8 @@ shifty.config.apps = {
 			"Gran Paradiso",
 		},
 		tag = "web",
+		slave = true,
+		float = false,
 	},
 	{
 		match = {
