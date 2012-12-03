@@ -291,8 +291,8 @@ root.buttons(awful.util.table.join(
 -- Key bindings
 globalkeys = awful.util.table.join(
     -- Tags
-    awful.key({modkey,}, "Left", awful.tag.viewprev),
-    awful.key({modkey,}, "Right", awful.tag.viewnext),
+    awful.key({modkey, "Control"}, "Left", awful.tag.viewprev),
+    awful.key({modkey, "Control"}, "Right", awful.tag.viewnext),
     awful.key({modkey,}, "Escape", awful.tag.history.restore),
 
     -- Shifty: keybindings specific to shifty
@@ -354,7 +354,13 @@ globalkeys = awful.util.table.join(
     awful.key({modkey, "Shift"}, "space",
         function() awful.layout.inc(layouts, -1) end),
 
-    awful.key({ modkey, "Control" }, "x", obvious.popup_run_prompt.run_prompt)
+    awful.key({ modkey, "Control" }, "x", obvious.popup_run_prompt.run_prompt),
+	awful.key({ modkey }, "F7", function() awful.util.spawn("amixer set Master toggle") end),
+	awful.key({ modkey }, "F8", function() awful.util.spawn("mpc prev") end),
+	awful.key({ modkey }, "F9", function() awful.util.spawn("mpc next") end),
+	awful.key({ modkey }, "F10", function() awful.util.spawn("mpc toggle") end),
+	awful.key({ modkey }, "F11", function() awful.util.spawn("amixer set Master 2-") end),
+	awful.key({ modkey }, "F12", function() awful.util.spawn("amixer set Master 2+") end)
     )
     -- Prompt
     --awful.key({modkey, "Control"}, "x", function()
