@@ -308,6 +308,9 @@ function()
 end),
 awful.key({modkey}, "a", shifty.add), -- creat a new tag
 awful.key({modkey,}, "r", shifty.rename), -- rename a tag
+awful.key({modkey,}, "z", shifty.shift_prev), -- shift tag left
+awful.key({modkey,}, "x", shifty.shift_next), -- shift tag right
+
 
 awful.key({modkey,}, "j",
 function()
@@ -319,7 +322,6 @@ function()
 	awful.client.focus.byidx(-1)
 	if client.focus then client.focus:raise() end
 end),
-awful.key({modkey,}, "w", function() mymainmenu:show(true) end),
 
 -- Layout manipulation
 awful.key({modkey, "Shift"}, "j",
@@ -327,7 +329,7 @@ function() awful.client.swap.byidx(1) end),
 awful.key({modkey, "Shift"}, "k",
 function() awful.client.swap.byidx(-1) end),
 awful.key({modkey, "Control"}, "j", function() awful.screen.focus(1) end),
-awful.key({modkey, "Control"}, "k", function() awful.screen.focus(-1) end),
+awful.key({modkey, "Control"}, "k", function() awful.screen.focus(2) end),
 awful.key({modkey,}, "u", awful.client.urgent.jumpto),
 awful.key({modkey,}, "Tab",
 function()
