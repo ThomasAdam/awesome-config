@@ -168,7 +168,7 @@ shifty.config.apps = {
 --  * run : function to exec when shifty creates a new tag
 --  * all other parameters (e.g. layout, mwfact) follow awesome's tag API
 shifty.config.defaults = {
-	layout = awful.layout.suit.tile.bottom,
+	layout = awful.layout.suit.float,
 	ncol = 1,
 	guess_name = true,
 	guess_position = true,
