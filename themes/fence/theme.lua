@@ -38,7 +38,7 @@ theme.fg_urgent     = "#2c2c2c"
 theme.fg_minimize   = "#2c2c2c"
 
 theme.border_width  = "3"
-theme.border_normal = "darkgreen"
+theme.border_normal = "darkgrey"
 theme.border_focus  = "darkorange"
 theme.border_marked = "#07AD08"
 
