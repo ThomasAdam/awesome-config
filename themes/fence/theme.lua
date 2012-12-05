@@ -27,8 +27,8 @@ end
 
 theme.font          = "fixed 10"
 
-theme.bg_normal     = "#4F9BFF"
-theme.bg_focus      = "#0066ef"
+theme.bg_normal     = "#3386F2"
+theme.bg_focus      = "#0047A3"
 theme.bg_urgent     = "#EE36C6"
 theme.bg_minimize   = "#C8C8C8"
 

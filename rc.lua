@@ -45,13 +45,9 @@ layouts =
 	awful.layout.suit.floating,
 	awful.layout.suit.tile,
 	awful.layout.suit.tile.left,
-	awful.layout.suit.tile.bottom,
-	awful.layout.suit.tile.top,
 	awful.layout.suit.fair,
-	awful.layout.suit.fair.horizontal,
 	awful.layout.suit.max,
 	awful.layout.suit.max.fullscreen,
-	awful.layout.suit.magnifier
 }
 
 -- Define if we want to use titlebar on all applications.
@@ -60,7 +56,7 @@ use_titlebar = false
 -- Shifty configured tags.
 shifty.config.tags = {
 	web = {
-		layout      = awful.layout.suit.tile,
+		layout      = layouts[2],
 		mwfact    = 0.50,
 		exclusive   = false,
 		position    = 1,
@@ -69,7 +65,7 @@ shifty.config.tags = {
 		leave_kills = true,
 	},
 	main = {
-		layout    = awful.layout.suit.tile,
+		layout    = layouts[2],
 		mwfact    = 0.50,
 		exclusive = false,
 		position  = 2,
@@ -79,14 +75,14 @@ shifty.config.tags = {
 		leave_kills = true,
 	},
 	chat = {
-		layout	  = awful.layout.suit.max,
+		layout	  = layouts[5],
 		position  = 3,
 		screen    = 2,
 		init      = true,
 		leave_kills = true,
 	},
 	media = {
-		layout    = awful.layout.suit.float,
+		layout    = layouts[1],
 		exclusive = false,
 		position  = 4,
 		screen    = 1,
@@ -168,7 +164,7 @@ shifty.config.apps = {
 --  * run : function to exec when shifty creates a new tag
 --  * all other parameters (e.g. layout, mwfact) follow awesome's tag API
 shifty.config.defaults = {
-	layout = awful.layout.suit.float,
+	layout = awful.layout.suit.floating,
 	ncol = 1,
 	guess_name = true,
 	guess_position = true,
@@ -179,7 +175,7 @@ shifty.config.defaults = {
 -- Create a textbox widget
 mytextclock = awful.widget.textclock({align = "right"})
 spacer       = widget({ type = "textbox"  })
-spacer.text  = ' | '
+spacer.text  = '|'
 
 -- Create a systray
 mysystray = widget({type = "systray", align = "right"})
@@ -252,7 +248,7 @@ for s = 1, screen.count() do
 	mytasklist.buttons)
 
 	-- Create the wibox
-	mywibox[s] = awful.wibox({position = "top", screen = s})
+	mywibox[s] = awful.wibox({position = "top", screen = s, height = 16})
 	-- Add widgets to the wibox - order matters
 	mywibox[s].widgets = {
 		{
@@ -263,9 +259,8 @@ for s = 1, screen.count() do
 		mylayoutbox[s],
 		spacer,
 		mytextclock,
-		spacer,
 		s == 1 and mysystray or nil,
-		spacer,
+		s == 2 and nil or spacer,
 		mytasklist[s],
 		spacer,
 		layout = awful.widget.layout.horizontal.rightleft
