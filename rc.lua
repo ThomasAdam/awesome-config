@@ -9,7 +9,7 @@ require("beautiful")
 require("naughty")
 -- shifty - dynamic tagging library
 require("shifty")
-
+require("teardrop")
 require("obvious.popup_run_prompt")
 obvious.popup_run_prompt.set_prompt_string("Run: ")
 
@@ -336,6 +336,7 @@ end),
 
 -- Standard program
 awful.key({modkey,}, "Return", function() awful.util.spawn(terminal) end),
+awful.key({modkey,}, "/", function () teardrop("xterm -e 'tmux -2 -u a -tspecial'", "top", 0.5 ) end),
 awful.key({modkey, "Control"}, "r", awesome.restart),
 awful.key({modkey, "Shift"}, "q", awesome.quit),
 
