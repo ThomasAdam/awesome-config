@@ -174,9 +174,9 @@ shifty.config.defaults = {
 --  Wibox
 -- Create a textbox widget
 mytextclock = awful.widget.textclock({align = "right"},
-	'<span background="#0B00A3" color="white">%a %b %d, %H:%M:%S</span>')
+	'<span background="#0B00A3" color="white">%a %b %d, %H:%M</span>')
 spacer       = widget({ type = "textbox"  })
-spacer.text  = '|'
+spacer.text  = '<span color="white">|</span>'
 
 -- Create a systray
 mysystray = widget({type = "systray", align = "right"})
