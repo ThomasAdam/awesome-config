@@ -105,11 +105,6 @@ shifty.config.apps = {
 	{
 		match = {
 			"Mplayer.*",
-			"Mirage",
-			"gimp",
-			"gtkpod",
-			"Ufraw",
-			"easytag",
 		},
 		tag = "media",
 		nopopup = true,
@@ -127,6 +122,7 @@ shifty.config.apps = {
 			"irc.*",
 		},
 		tag = "chat",
+		nopopup = "true"
 	},
 	{
 		match = {
@@ -136,8 +132,12 @@ shifty.config.apps = {
 		slave = true
 	},
 	{
+		-- float rules.
 		match = {
 			"Npviewer.bin",
+			"Xchat",
+			"XConsole",
+			"Agave",
 		},
 		float = true,
 	},
