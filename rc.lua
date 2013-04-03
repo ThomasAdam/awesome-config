@@ -9,6 +9,7 @@ require("beautiful")
 require("naughty")
 -- shifty - dynamic tagging library
 require("shifty")
+require("sharetags")
 require("teardrop")
 require("obvious.popup_run_prompt")
 obvious.popup_run_prompt.set_prompt_string("Run: ")
@@ -105,6 +106,11 @@ shifty.config.tags = {
 		leave_kills = true
 	}
 }
+
+tags = {
+	names = { "web", "main", "irc", "vbox", "misc" }
+}
+tags = sharetags.create_tags(tags.names, layouts)
 
 -- SHIFTY: application matching rules
 -- order here matters, early rules will be applied first
@@ -205,13 +211,31 @@ mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
 mytaglist.buttons = awful.util.table.join(
-awful.button({}, 1, awful.tag.viewonly),
-awful.button({modkey}, 1, awful.client.movetotag),
-awful.button({}, 3, function(tag) tag.selected = not tag.selected end),
-awful.button({modkey}, 3, awful.client.toggletag),
-awful.button({}, 4, awful.tag.viewnext),
-awful.button({}, 5, awful.tag.viewprev)
+awful.button({ }, 1, function(t)
+	local swap_t = awful.tag.selected()
+	local swap_s = t.screen
+	local sel = t.selected
+	if t.screen ~= mouse.screen then
+		sharetags.tag_move(t, mouse.screen)
+	end
+	if sel == true then
+		sharetags.tag_move(swap_t, swap_s)
+		awful.tag.viewonly(swap_t)
+	end
+	awful.tag.viewonly(t)
+end),
+awful.button({ modkey }, 1, awful.client.movetotag),
+awful.button({ }, 3, function(t)
+	if t.screen ~= mouse.screen then
+		sharetags.tag_move(t, mouse.screen)
+	end
+	awful.tag.viewtoggle(t)
+end),
+awful.button({ modkey }, 3, awful.client.toggletag),
+awful.button({ }, 4, awful.tag.viewnext),
+awful.button({ }, 5, awful.tag.viewprev)
 )
+
 
 mytasklist = {}
 mytasklist.buttons = awful.util.table.join(
@@ -256,9 +280,7 @@ for s = 1, screen.count() do
 	awful.button({}, 4, function() awful.layout.inc(layouts, 1) end),
 	awful.button({}, 5, function() awful.layout.inc(layouts, -1) end)))
 	-- Create a taglist widget
-	mytaglist[s] = awful.widget.taglist(s,
-	awful.widget.taglist.label.all,
-	mytaglist.buttons)
+	mytaglist[s] = sharetags.taglist(s, sharetags.label.all, mytaglist.buttons)
 
 	-- Create a tasklist widget
 	mytasklist[s] = awful.widget.tasklist.new(function(c)
